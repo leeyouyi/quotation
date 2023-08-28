@@ -9,12 +9,12 @@ const Style = styled(Box)(() => ({
   overflow: "hidden",
   ".listItem": {
     span: {
-      width: "150px",
+      width: "130px",
     },
   },
   ".MuiListItemText-root": {
     span: {
-      width: "120px",
+      width: "180px",
       borderBottom: " 1px solid #aaa",
       textAlign: "right",
       padding: " 0 10px",

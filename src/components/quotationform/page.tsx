@@ -174,7 +174,7 @@ const QuotationForm = (props: QuotationFormProps) => {
         <Box>
           <div className="wrap">
             <div className="flex">
-              <label htmlFor="">
+              <label>
                 <span className="star">*</span>機房代碼
               </label>
               <div>
@@ -190,7 +190,7 @@ const QuotationForm = (props: QuotationFormProps) => {
             </div>
 
             <div className="flex">
-              <label htmlFor="">
+              <label>
                 <span className="star">*</span>申請人單位
               </label>
               <div>
@@ -213,7 +213,7 @@ const QuotationForm = (props: QuotationFormProps) => {
               </div>
             </div>
             <div className="flex">
-              <label htmlFor="">
+              <label>
                 <span className="star">*</span>申請人姓名
               </label>
               <div>
@@ -230,7 +230,7 @@ const QuotationForm = (props: QuotationFormProps) => {
               </div>
             </div>
             <div className="flex">
-              <label htmlFor="">
+              <label>
                 <span className="star">*</span>專案名稱
               </label>
               <div>
@@ -247,7 +247,7 @@ const QuotationForm = (props: QuotationFormProps) => {
               </div>
             </div>
             <div className="flex">
-              <label htmlFor="">
+              <label>
                 <span className="star">*</span>申請人分機
               </label>
               <div>
@@ -264,7 +264,7 @@ const QuotationForm = (props: QuotationFormProps) => {
               </div>
             </div>
             <div className="flex">
-              <label htmlFor="">
+              <label>
                 <span className="star">*</span>服務期間
               </label>
               <div>
@@ -349,7 +349,7 @@ const QuotationForm = (props: QuotationFormProps) => {
               月
             </div>
             <div className="flex">
-              <label htmlFor="">
+              <label>
                 <span className="star">*</span>報價者姓名
               </label>
               <div>
@@ -366,7 +366,7 @@ const QuotationForm = (props: QuotationFormProps) => {
               </div>
             </div>
             <div className="flex">
-              <label htmlFor="">
+              <label>
                 <span className="star">*</span>報價者電話
               </label>
               <div>
@@ -383,7 +383,7 @@ const QuotationForm = (props: QuotationFormProps) => {
               </div>
             </div>
             <div className="flex">
-              <label htmlFor="">
+              <label>
                 <span className="star">*</span>報價者e-mail
               </label>
               <div>
@@ -400,7 +400,7 @@ const QuotationForm = (props: QuotationFormProps) => {
               </div>
             </div>
             <div className="flex">
-              <label htmlFor="">備註</label>
+              <label>備註</label>
               <div>
                 <TextField
                   className="input"
