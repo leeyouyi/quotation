@@ -5,6 +5,8 @@ import { useMemo } from "react";
 const Style = styled(Box)(() => ({
   background: "#fff",
   margin: "10px 0",
+  borderRadius: "10px",
+  overflow: "hidden",
   ".listItem": {
     span: {
       width: "150px",

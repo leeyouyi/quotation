@@ -1,6 +1,4 @@
 "use client";
-
-import { Iproduct } from "@/app/page";
 import {
   Select,
   Card,
@@ -15,42 +13,9 @@ import {
   styled,
 } from "@mui/material";
 import { ChangeEvent, useMemo, useState } from "react";
-
-const menuItems = [
-  { value: 0, label: "" },
-  { value: 10, label: "商品名稱A" },
-  { value: 20, label: "商品名稱B" },
-  { value: 30, label: "商品名稱C" },
-];
-const listItmes = [
-  {
-    value: 10,
-    id: 10,
-    productName: "商品A123",
-    unitPrice: 10,
-    unit: "式",
-    remarks:
-      "商品說明商品說明商品說明商品說明商品說明商品說明商品說明商品說明商品說明xxx",
-  },
-  {
-    value: 20,
-    id: 20,
-    productName: "商品B456",
-    unitPrice: 20,
-    unit: "套",
-    remarks:
-      "商品說明商品說明商品說明商品說明商品說明商品說明商品說明商品說明商品說明000",
-  },
-  {
-    value: 30,
-    id: 30,
-    productName: "商品C789",
-    unitPrice: 30,
-    unit: "件",
-    remarks:
-      "商品說明商品說明商品說明商品說明商品說明商品說明商品說明商品說明商品說明ssffww",
-  },
-];
+import { listItmes, menuItems } from "./consts";
+import { ProductProps } from "./init";
+import { Iproduct } from "@/app/init";
 
 const Style = styled(Box)(() => ({
   ".textInput": {
@@ -65,14 +30,15 @@ const Style = styled(Box)(() => ({
     },
   },
   ".listItem": {
-    cursor: "pointer",
+    span: {
+      cursor: "pointer",
+      "&:hover": {
+        color: "#428bca",
+        textDecoration: "underline",
+      },
+    },
   },
 }));
-
-interface ProductProps {
-  id: number;
-  onProduct: (id: number, data: Iproduct) => void;
-}
 
 const Product = (props: ProductProps) => {
   const { id, onProduct } = props;
@@ -101,7 +67,10 @@ const Product = (props: ProductProps) => {
 
   return (
     <Style>
-      <Card variant="outlined" sx={{ minWidth: 500 }}>
+      <Card
+        variant="outlined"
+        sx={{ minWidth: 550, borderRadius: "10px", overflow: "hidden" }}
+      >
         <CardContent>
           <Box
             sx={{
@@ -136,7 +105,7 @@ const Product = (props: ProductProps) => {
               >
                 <TextField
                   className="textInput"
-                  label="搜尋"
+                  label="關鍵字搜尋"
                   variant="outlined"
                   onChange={handleInputChange}
                 />

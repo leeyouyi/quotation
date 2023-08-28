@@ -2,43 +2,35 @@
 
 import { Box, Card, CardContent, Icon, TextField, styled } from "@mui/material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import { Iproduct } from "@/app/page";
 import { ChangeEvent, useEffect, useState } from "react";
+import { Iproduct } from "@/app/init";
+import { ProductDetailsProps } from "./init";
+
 const Style = styled(Box)(() => ({
   flex: 1,
   marginLeft: "10px",
   background: "#fff",
   position: "relative",
+  borderRadius: "10px",
+  overflow: "hidden",
   ".details": {
     width: "100%",
-
     ".inputWrap": {
       ">span": {
         padding: "5px",
         fontSize: "18px",
       },
     },
-
     input: {
       padding: "5px",
-      width: "50px",
+      width: "40px",
       textAlign: "right",
-    },
-    "input:focus": {
-      outline: "none",
     },
   },
 }));
 
-interface ProductDetailsProps {
-  id: number;
-  detail: Iproduct;
-  showDetail: boolean;
-  onAdd: () => void;
-  onTotal: (id: number, totalNum: number) => void;
-}
 const ProductDetails = (props: ProductDetailsProps) => {
-  const { id, detail, showDetail, onAdd, onTotal } = props;
+  const { listId, detail, showDetail, onAdd, onTotal } = props;
   const [num, setNum] = useState(0);
   const [momth, setMomth] = useState(0);
   const [total, setTotal] = useState(0);
@@ -47,6 +39,9 @@ const ProductDetails = (props: ProductDetailsProps) => {
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const value = Number(event.target.value);
+    if (value < 0) {
+      return false;
+    }
     setNum(value);
   };
 
@@ -54,6 +49,9 @@ const ProductDetails = (props: ProductDetailsProps) => {
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const value = Number(event.target.value);
+    if (value < 0) {
+      return false;
+    }
     setMomth(value);
   };
 
@@ -64,12 +62,18 @@ const ProductDetails = (props: ProductDetailsProps) => {
 
   useEffect(() => {
     const totalNum = num * momth * detail.unitPrice;
-    if (totalNum !== 0) {
-      setTotal(totalNum);
-      onTotal(id, totalNum);
-    }
+
+    setTotal(totalNum);
+    const productDetails = {
+      listId: listId,
+      productId: detail.id,
+      quantity: num,
+      periodInMonth: momth,
+    };
+    onTotal(listId, totalNum, productDetails);
+    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [num, momth, detail.unitPrice, id]);
+  }, [num, momth, detail.unitPrice, listId, detail.productName]);
 
   return (
     showDetail && (
@@ -80,7 +84,7 @@ const ProductDetails = (props: ProductDetailsProps) => {
               <Box
                 sx={{ display: "flex", alignItems: "center", width: "100%" }}
               >
-                <div style={{ width: "30%" }}>
+                <div style={{ width: "40%" }}>
                   <h3>規格說明 : {detail.productName} </h3>
                 </div>
                 <div
@@ -89,6 +93,7 @@ const ProductDetails = (props: ProductDetailsProps) => {
                     display: "flex",
                     alignItems: "center",
                     width: "60%",
+                    paddingRight: "10px",
                   }}
                 >
                   <TextField
@@ -99,10 +104,10 @@ const ProductDetails = (props: ProductDetailsProps) => {
                     onChange={handleNumChanhe}
                   />
                   <span>{detail.unit}</span>
-                  <span style={{ paddingLeft: "30px" }}>單價:</span>
+                  <span style={{ paddingLeft: "20px" }}>單價:</span>
                   <span
                     style={{
-                      minWidth: "100px",
+                      minWidth: "70px",
                       paddingLeft: "0px",
                       paddingRight: "15px",
                     }}
@@ -130,7 +135,7 @@ const ProductDetails = (props: ProductDetailsProps) => {
                   </div>
                 </div>
               </Box>
-              <div style={{ padding: "10px 0" }}>{detail.remarks}</div>
+              <div style={{ padding: "20px 5px 10px" }}>{detail.remarks}</div>
             </form>
           </CardContent>
         </Card>
