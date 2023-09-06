@@ -41,11 +41,11 @@ const Style = styled(Box)(() => ({
   ".flex": {
     display: "flex",
     alignItems: "center",
-    borderBottom: "1px solid #ccc",
+    // borderBottom: "1px solid #ccc",
     label: {
       width: "30%",
       textAlign: "right",
-      padding: "5px 10px",
+      padding: "5px 15px",
       fontSize: "18px",
       background: "rgb(238, 241, 246)",
       display: "flex",
